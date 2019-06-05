@@ -1,10 +1,17 @@
 #!/usr/bin/python
 
 import math
+import sys
 
 def recipe_batches(recipe, ingredients):
-  pass 
-
+  servings = sys.maxsize
+  for key in recipe:
+    if(key in ingredients):
+      serving_per_ingredient = ingredients[key]//recipe[key]
+      servings = serving_per_ingredient if serving_per_ingredient < servings else servings
+    else:
+      return 0
+  return servings
 
 if __name__ == '__main__':
   # Change the entries of these dictionaries to test 
