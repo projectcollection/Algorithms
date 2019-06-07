@@ -1,9 +1,20 @@
 #!/usr/bin/python
 
 import argparse
+import sys
 
 def find_max_profit(prices):
-  pass
+  curr_low = curr_prof = -sys.maxsize
+  for i, price in enumerate(prices):
+    if price < curr_low:
+      curr_low = price
+    for j in range(i+1,len(prices)):
+      if prices[j]-price > curr_prof:
+        curr_prof = prices[j]-price 
+  return curr_prof
+
+  
+
 
 
 if __name__ == '__main__':
